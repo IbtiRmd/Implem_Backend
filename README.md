@@ -32,8 +32,12 @@ mongosh --version
 # Install dependencies
 npm install
 
+# Start mango db on MAC OS In the terminal
+brew services start mongodb-community@7.0
 # Start local dev server
 npm run dev:server
+#Sop mongo db on MacOs terminal
+brew services stop mongodb-community@7.0
 
 # Populate database with two users
 npm run populate-db
