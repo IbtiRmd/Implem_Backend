@@ -1,0 +1,18 @@
+
+.userNameContainer {
+    display: flex;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  .userNameLogo {
+    margin-right: 10px;
+  }
+  .userNameContent {
+    margin-right: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .userCircle {
+    font-size: 25px;
+  }
