@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
 
-import React from "react";
-import "./pages/Main.css";
-import { useState } from "react";
-import { Routes,Route } from "react-router-dom";
+import "./pages/Main.css"
 
-import Home from "./pages/Home/Home";
-import User from "./pages/User/User";
+import React, { useEffect } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./App.css";
+import Navigation from "./navigation/Navigation";
+import { Provider } from "react-redux";
+import store from "./redux/store";
+import axios from "axios";
 
-
-function App() 
-
-{
+function App() {
+  useEffect(() => {setupAxiosUrl()}, []);
+  const setupAxiosUrl = () => {
+    axios.interceptors.request.use(
+      (config) => {
+        config.baseURL = "http://localhost:3000/api/v1/user";
+        return config;
+      },
+      (err) => Promise.reject(err)
+    );
+  };
   return (
-    <Routes>
-      <Route path="/" element={<Home/>}></Route>
-      <Route path="/User" element={<User/>}></Route>
-      <Route></Route>
-    </Routes>
-  )
+    <Provider store={store}>
+       <ToastContainer />
+      <Navigation />
+    </Provider>
+  );
 }
-
 export default App;
