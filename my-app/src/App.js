@@ -7,7 +7,7 @@ import { useState } from "react";
 import { Routes,Route } from "react-router-dom";
 
 import Home from "./pages/Home/Home";
-//import User from "./pages/User/User";
+import User from "./pages/User/User";
 
 
 function App() 
@@ -16,7 +16,7 @@ function App()
   return (
     <Routes>
       <Route path="/" element={<Home/>}></Route>
-      
+      <Route path="/User" element={<User/>}></Route>
       <Route></Route>
     </Routes>
   )
