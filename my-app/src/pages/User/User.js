@@ -1,8 +1,10 @@
 import React from "react";
 import "../Main.css";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useState, createContext } from "react";
 import UserNameForm from "../../components/userNameForm/UserNameForm";
+
+const UserContext = createContext()
 
 function User() {
   const { user, token } = useSelector((state) => ({
@@ -12,7 +14,15 @@ function User() {
   console.log(user);
   const [editingName, setEditingName] = useState(false);
 
+  const toggleEditingName = () => {
+    setEditingName((prevState) => !prevState);
+  };
+
+
+ 
+
   return token ? (
+    <UserContext.Provider value={editingName}>
     <div>
       <main className="main bg-dark">
         <div className="header">
@@ -21,13 +31,13 @@ function User() {
             <br />
             {`${user.firstName} ${user.lastName}`} !
           </h1>
-          <button className="edit-button" onClick={() => setEditingName(true)}>
+          <button className="edit-button" onClick={toggleEditingName}>
             Edit Name
           </button>
       
 
         {editingName && (
-          <UserNameForm firstName={user.firstName} lastName={user.lastName} />
+          <UserNameForm toggleEditingName={toggleEditingName} />
         )}
   </div>
         <h2 className="sr-only">Accounts</h2>
@@ -66,8 +76,10 @@ function User() {
         <p className="footer-text">Copyright 2020 Argent Bank</p>
       </footer>
     </div>
-  ) : (
-    <div>login...</div>
+    </UserContext.Provider>
+  )
+   : (
+   <div>login...</div>
   );
 }
 

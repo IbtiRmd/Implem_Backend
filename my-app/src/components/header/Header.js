@@ -11,7 +11,7 @@ import {
 import "../header/Header.css";
 
 export default function Header() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); //envoyer des actions vers le store
 
   const navigate = useNavigate();
 

@@ -5,8 +5,13 @@ import axios from "axios";
 import { USER_PROFILE_URL } from "../../redux/api/api";
 import { loginUserToken } from "../../redux/actions/user";
 import { toast } from "react-toastify";
+import { createContext, useContext } from "react";
 
-function UserNameForm() {
+
+function UserNameForm({ toggleEditingName }) {
+  
+  //const isCollapsed = useContext(UserContext);
+
   const dispatch = useDispatch();
   const { user, token } = useSelector((state) => ({
     user: state.userReducer.user,
@@ -19,11 +24,14 @@ function UserNameForm() {
     setUserName(user.userName); // On met la valeur du userName à jour avec le userName réel de l'utilisateur
   }, [user]);
 
-  const handleUserNameChange = (e) => {
+  
+  const handleUserNameChange = (e) => 
+  {
     setUserName(e.target.value);
   };
 
   const updadeUser = (e) => {
+    toggleEditingName();
     e.preventDefault();
     const body = { userName: userName };
     console.log(body);
@@ -71,6 +79,9 @@ function UserNameForm() {
         <div className="button-container">
           <button type="submit">Save</button>
           <button type="button">Cancel</button>
+
+          
+         
         </div>
       </form>
     </div>

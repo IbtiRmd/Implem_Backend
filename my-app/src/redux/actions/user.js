@@ -27,7 +27,7 @@ export const loginUser = (body, goToUser, dispatch) => {
           }
         )
         .then((response) => {
-          localStorage.setItem("token", res.data.body.token);
+          localStorage.setItem("token", res.data.body.token); //enregistre sur ce pc que jutilise , une variable qui sappelle token et qui contient res.data.body.token
           toast(res.data.message);
           goToUser();
 
