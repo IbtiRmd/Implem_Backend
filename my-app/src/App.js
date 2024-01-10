@@ -15,7 +15,7 @@ function App() {
   const setupAxiosUrl = () => {
     axios.interceptors.request.use(
       (config) => {
-        config.baseURL = "http://localhost:3000/api/v1/user";
+        config.baseURL = "http://localhost:3001/api/v1/user";
         return config;
       },
       (err) => Promise.reject(err)
