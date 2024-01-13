@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../redux/actions/user";
-import argentBankLogo from "../../img/argentBankLogo.png";
+import argentBankLogo from "../../img/argentBankLogo.webp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleUser,

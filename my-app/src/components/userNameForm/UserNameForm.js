@@ -78,7 +78,7 @@ function UserNameForm({ toggleEditingName }) {
 
         <div className="button-container">
           <button type="submit">Save</button>
-          <button type="button">Cancel</button>
+          <button onClick={() => toggleEditingName()}>Cancel</button>
 
           
          
